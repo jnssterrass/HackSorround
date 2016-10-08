@@ -25,20 +25,14 @@ var constraints = window.constraints = {
     video: false
 };
 
-function setRemotePeerId() {
-    var input = document.getElementById("id_peer");
-    remotePeerId = input.value;
-
+function initSender(){
+    remotePeerId = getReceiverId();
     initMediaDevices();
 }
 
-function setAsSender() {
-    imSender = true;
-}
-
-function setAsReceiver() {
-    imSender = false;
-}
+function getReceiverId(){
+    return "";
+};
 
 function handleSuccess(stream) {
     var audioTracks = stream.getAudioTracks();
@@ -50,7 +44,7 @@ function handleSuccess(stream) {
     window.stream = stream; // make variable available to browser console
     audio.srcObject = stream;
     sendStream = stream;
-    if (imSender) connectWithPeer(remotePeerId, stream);
+    connectWithPeer(remotePeerId, stream);
 }
 
 function handleError(error) {
@@ -87,22 +81,8 @@ function initSource() {
     });
 }
 
-function connectWithPeer(peerId) {
-    conn = sourcePeer.connect(peerId);
-    conn.on('open', function() {
-        // Receive messages
-        conn.on('data', function(data) {
-            console.log('Received', data);
-        });
-    });
-}
-
 initSource();
 
 function connectWithPeer(peerId, stream) {
     conn = sourcePeer.call(peerId, stream);
-//    conn.on('error', function(error) {
-//        console.log(error);
-//    });
-//    conn.on('open', openFunc);
 }

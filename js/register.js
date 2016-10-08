@@ -5,7 +5,7 @@
 var peerId;
 
 $(document).ready(function () {
-    peerId = new Peer({key: 'lwjd5qra8257b9'});
+    // peerId = new Peer({key: 'lwjd5qra8257b9'});
 
     // Initialize Firebase
     var config = {
@@ -20,12 +20,12 @@ $(document).ready(function () {
 
 });
 
-function register(role) {
+function register(role, peerId) {
     var selectedRadio = $("input[name=options]:checked").val();
     $.ajax({
         type: "POST",
         url: "https://hack-surround.firebaseio.com/"+role+"/" + selectedRadio + "/.json?auth=IxrO3PDuz4bvFvwrNbpIV48pISdjykYLrri3tNjB",
-        data: JSON.stringify({"peerId": peerId.id}),
+        data: JSON.stringify({"peerId": peerId),
         success: function () {
             console.log("Success");
         },

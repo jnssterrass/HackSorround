@@ -76,10 +76,11 @@
 <script src="js/main.js"></script>
 <script>
     $("#sender").click(function () {
-        register("sender");
+        register("sender", sourcePeerId);
+        initSender();
     });
     $("#receiver").click(function () {
-        register("receivers");
+        register("receivers", sourcePeerId);
     });
 </script>
 </body>
