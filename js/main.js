@@ -54,7 +54,7 @@ function initMediaDevices(){
 }
 
 function initSource() {
-    sourcePeer = new Peer({host: "http://juansalmeron.com",port: 9000});
+    sourcePeer = new Peer({host: "juansalmeron.com",port: 9000});
     sourcePeer.on('open', function(id) {
         sourcePeerId = id;
         console.log('Source peer ID is: ' + sourcePeerId);
