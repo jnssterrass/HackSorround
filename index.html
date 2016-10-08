@@ -5,7 +5,7 @@
     <title>Hack Surronund</title>
 
     <!-- Material Design Lite -->
-    <!--<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">-->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.amber-deep_orange.min.css"/>
     <link rel="stylesheet" href="style.css">
@@ -25,6 +25,7 @@
             <a href="https://github.com/jnssterrass/HackSorround/"
                title="WebRTC HackSurround">HackSurround</a>
         </h1>
+
     </div>
 
     <div class="mdl-card__supporting-text">
@@ -70,17 +71,15 @@
             </a>
         </div>
     </div>
-    <audio controls autoplay></audio>
 </div>
 <script src="js/register.js"></script>
-<script src="js/main.js"></script>
 <script>
     $("#sender").click(function () {
-        register("sender", sourcePeerId);
-        initSender();
+        register("sender");
+
     });
     $("#receiver").click(function () {
-        register("receivers", sourcePeerId);
+        register("receivers");
     });
 </script>
 </body>
