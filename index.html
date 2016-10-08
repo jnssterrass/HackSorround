@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<!--
- *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
- *
- *  Use of this source code is governed by a BSD-style license
- *  that can be found in the LICENSE file in the root of the source
- *  tree.
--->
 <html>
 <head>
 
@@ -17,31 +10,50 @@
 
     <base target="_blank">
 
-    <title>gUM audio</title>
+    <title>Hack Surround</title>
 
     <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 </head>
 
 <body>
 
-<div id="container">
+<div id="container" class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div id="title" class="mdl-card__title">
+        <h1 class="mdl-card__title-text"><a href="https://github.com/jnssterrass/HackSorround/"
+                                            title="WebRTC HackSurround">HackSurround</a>
+        </h1>
+    </div>
 
-    <h1><a href="//webrtc.github.io/samples/" title="WebRTC samples homepage">WebRTC samples</a> <span>getUserMedia, audio only</span></h1>
+    <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="id_peer">
+            <label class="mdl-textfield__label" for="id_peer">Enter the id...</label>
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--raised" id="send">Ok</button>
+    </div>
 
-    <audio id="gum-local" controls autoplay></audio>
+    <div class="mdl-card__actions mdl-card--border">
 
-    <p class="warning">Warning: if you're not using headphones, pressing play will cause feedback.</p>
-
-    <p>Render the audio stream from an audio-only <code>getUserMedia()</code> call with an audio element.</p>
-
-    <p>The <code>MediaStream</code> object <code><em>stream</em></code> passed to the <code>getUserMedia()</code> callback is in global scope, so you can inspect it from the console.</p>
-
-    <a href="https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/audio" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+    </div>
 
 </div>
 
+<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 <script src="js/main.js"></script>
+<script>
+    $("#send").click(function () {
+        var id = $("#id_peer").val();
+        //callRemote(id);
+        console.log(id);
+        $("#id_peer").val('');
+    });
+</script>
 
 </body>
 </html>
