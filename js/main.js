@@ -57,10 +57,6 @@ function handleError(error) {
     console.log('navigator.getUserMedia error: ', error);
 }
 
-if(imSender){
-    initMediaDevices();
-}
-
 function initMediaDevices(){
     navigator.mediaDevices.getUserMedia(constraints).
     then(handleSuccess).catch(handleError);
@@ -112,6 +108,6 @@ function connectWithPeer(peerId, stream) {
 }
 
 function callRemote() {
-    var call = peer.call(remotePeerId, mediaStream);
+    var call = sourcePeer.call(remotePeerId, mediaStream);
 }
 
