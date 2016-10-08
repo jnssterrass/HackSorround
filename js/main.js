@@ -15,7 +15,7 @@ var sourcePeer;
 var conn;
 var call;
 var sendStream;
-var imSender = false;
+var imSender = true;
 
 // Put variables in global scope to make them available to the browser console.
 var audio = document.querySelector('audio');
@@ -27,6 +27,9 @@ var constraints = window.constraints = {
 
 function setRemotePeerId(id) {
     remotePeerId = id;
+
+    navigator.mediaDevices.getUserMedia(constraints).
+    then(handleSuccess).catch(handleError);
 }
 
 function setAsSender() {
@@ -53,9 +56,6 @@ function handleSuccess(stream) {
 function handleError(error) {
     console.log('navigator.getUserMedia error: ', error);
 }
-
-navigator.mediaDevices.getUserMedia(constraints).
-then(handleSuccess).catch(handleError);
 
 function initSource() {
     sourcePeer = new Peer({key: 'lwjd5qra8257b9'});
