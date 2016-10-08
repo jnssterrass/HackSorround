@@ -7,76 +7,118 @@
     <!-- Material Design Lite -->
     <!-- <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.amber-deep_orange.min.css"/>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!-- PeerJS -->
-    <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="options">
-    <div id="title" class="mdl-card__title">
-        <h1 class="mdl-card__title-text">
-            <a href="https://github.com/jnssterrass/HackSorround/"
-               title="WebRTC HackSurround">HackSurround</a>
-        </h1>
-    </div>
 
-    <div class="mdl-card__supporting-text">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="title_room">
-            <label class="mdl-textfield__label" for="title_room">Room title...</label>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center"><i class="material-icons">surround_sound</i>HackSurround</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="https://github.com/jnssterrass/HackSorround"><i class="material-icons">code</i></a></li>
+                <li><a href="#"><i class="material-icons">perm_identity</i></a></li>
+                <li><a href="#"><i class="material-icons">info</i></a></li>
+            </ul>
         </div>
-        <br>
-        Which channel are you?
-        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-            <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="left" checked>
-            <span class="mdl-radio__label">Left</span>
-        </label>
+    </nav>
 
-        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-            <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="center" checked>
-            <span class="mdl-radio__label">Center</span>
-        </label>
-        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-            <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="right" checked>
-            <span class="mdl-radio__label">Right</span>
-        </label>
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-        Select your role:
-        <div>
-            <a id="sender" class="like_link">
-                <div class="demo-card-event mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
-                        <h4 class="display-1">Sender</h4>
-                    </div>
-                    <div class="mdl-card__menu">
-                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                            <i class="material-icons">file_upload</i></button>
-                    </div>
-                </div>
-            </a>
-            <a id="receiver" class="like_link">
-                <div class="demo-card-event mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
-                        <h4 class="display-1">Receiver</h4>
-                    </div>
-                    <div class="mdl-card__menu">
-                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                            <i class="material-icons">file_download</i></button>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+    <div id="options" class="container center">
+      <div class="section">
+
+        <h4>Which channel will you join?</h4>
+        <form action="#">
+            <p>
+              <input name="options" type="radio" id="left" value="left"/>
+              <label for="left">Left channel</label>
+          </p>
+          <p>
+              <input name="options" type="radio" id="center" value="center"/>
+              <label for="center">Center channel</label>
+          </p>
+          <p>
+              <input name="options" type="radio" id="right" value="right"/>
+              <label for="right">Right channel</label>
+          </p>
+      </form>
+
+  </div>
+  <div class="section">
+    <h4>Select your role</h4>
+    <a id="receiver" class="waves-effect waves-light btn-large"><i class="material-icons left">hearing</i>Receiver</a>
+    <a id="sender" class="waves-effect waves-light btn-large"><i class="material-icons left">settings_input_antenna</i>Sender</a>
+</div>
+<div class="section center">
     <audio controls autoplay></audio>
 </div>
+
+<div class="divider"></div>
+
+<div class="section">
+    <div class="row">
+        <div class="col s4">
+          <div class="center promo promo-example">
+            <i class="material-icons large" style="color: #ee6e73">flash_on</i>
+            <p class="promo-caption">Very light</p>
+            <p class="light center">We did most of the heavy lifting for you to provide a simple web audio-sharing</p>
+        </div>
+    </div>
+    <div class="col s4">
+      <div class="center promo promo-example">
+        <i class="material-icons large" style="color: #ee6e73">high_quality</i>
+        <p class="promo-caption">Better quality</p>
+        <p class="light center">By utilizing elements and principles of webRTC, we were able to create a tool that give the best sound quality</p>
+    </div>
+</div>
+<div class="col s4">
+  <div class="center promo promo-example">
+    <i class="material-icons large" style="color: #ee6e73">settings</i>
+    <p class="promo-caption">Easy to use</p>
+    <p class="light center">Just share your receiver id with your friends and enjoy!</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Hack Surround</h5>
+                <p class="grey-text text-lighten-4">Made with lots of love, coffee and some pizza</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Upesé Copyright
+            </div>
+          </div>
+        </footer>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+<!-- JQuery -->
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- PeerJS -->
+<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 <script src="js/register.js"></script>
 <script src="js/main.js"></script>
 
@@ -109,5 +151,6 @@
         register("receivers", sourcePeerId);
     });
 </script>
+
 </body>
 </html>
