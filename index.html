@@ -11,50 +11,74 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-    <!-- Firebase configuration -->
-    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyCi9IDe9SjYJrrgQg6Z71BDZOYqy6lFC-E",
-            authDomain: "hack-surround.firebaseapp.com",
-            databaseURL: "https://hack-surround.firebaseio.com",
-            storageBucket: "hack-surround.appspot.com",
-            messagingSenderId: "370099762743"
-        };
-
-        firebase.initializeApp(config);
-    </script>
-
+    <!-- PeerJS -->
+    <script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 </head>
 <body>
 <div id="options">
-    <a href="sender.html">
-        <div class="demo-card-event mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title mdl-card--expand">
-                <h4 class="display-1">Sender</h4>
-            </div>
-            <div class="mdl-card__menu">
-                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                    <i class="material-icons">file_upload</i></button>
-            </div>
-        </div>
-    </a>
-    <a href="receiver.html">
-        <div class="demo-card-event mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title mdl-card--expand">
-                <h4 class="display-1">Receiver</h4>
-            </div>
-            <div class="mdl-card__menu">
-                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                    <i class="material-icons">file_download</i></button>
-            </div>
-        </div>
-    </a>
-</div>
+    <div id="title" class="mdl-card__title">
+        <h1 class="mdl-card__title-text">
+            <a href="https://github.com/jnssterrass/HackSorround/"
+               title="WebRTC HackSurround">HackSurround</a>
+        </h1>
+    </div>
 
+    <div class="mdl-card__supporting-text">
+        Which channel are you?
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+            <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="left" checked>
+            <span class="mdl-radio__label">Left</span>
+        </label>
+
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+            <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="center" checked>
+            <span class="mdl-radio__label">Center</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+            <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="right" checked>
+            <span class="mdl-radio__label">Right</span>
+        </label>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        Select your role:
+        <div>
+            <a id="sender" class="like_link">
+                <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h4 class="display-1">Sender</h4>
+                    </div>
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">file_upload</i></button>
+                    </div>
+                </div>
+            </a>
+            <a id="receiver" class="like_link">
+                <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h4 class="display-1">Receiver</h4>
+                    </div>
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">file_download</i></button>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script src="js/register.js"></script>
+<script>
+    $("#sender").click(function () {
+        register("sender");
+    });
+    $("#receiver").click(function () {
+        register("receivers");
+    });
+</script>
 </body>
 </html>
