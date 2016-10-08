@@ -8,6 +8,7 @@ con
 ```
 {
     "peerId" : peerId
+	"title" : title
 }
 ```
 
@@ -28,6 +29,7 @@ con
 ```
 {
     "peerId" : peerId
+	"title" : title
 }
 ```
 
