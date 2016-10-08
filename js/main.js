@@ -13,6 +13,8 @@ var remotePeerId = "";
 var sourcePeerId = "";
 var sourcePeer;
 var conn;
+var call;
+var sendStream;
 
 // Put variables in global scope to make them available to the browser console.
 var audio = document.querySelector('audio');
@@ -31,6 +33,7 @@ function handleSuccess(stream) {
     };
     window.stream = stream; // make variable available to browser console
     audio.srcObject = stream;
+    sendStream = stream;
 }
 
 function handleError(error) {
@@ -39,10 +42,6 @@ function handleError(error) {
 
 navigator.mediaDevices.getUserMedia(constraints).
 then(handleSuccess).catch(handleError);
-
-function showMyId(id) {
-    $("#").val(id);
-}
 
 function getRemoteId() {
     return $("#id_peer").val();
@@ -58,7 +57,18 @@ function initSource() {
     sourcePeer.on('connection', function(conn) {
         // Receive messages
         conn.on('data', function(data) {
-            console.log('Received', data);
+            console.log('Received', data.id);
+        });
+    });
+    sourcePeer.on('call', function(call) {
+        console.log("Incomin Call");
+        console.log(call);
+        call.answer();
+        console.log("Answered call");
+        call.on('stream', function(stream) {
+            console.log("Stream received");
+            window.stream = stream;
+            audio.srcObject = stream;
         });
     });
 }
@@ -66,7 +76,7 @@ function initSource() {
 initSource();
 
 function connectWithPeer(peerId) {
-    conn = peer.connect(remotePeerId);
+    conn = sourcePeer.connect(peerId);
     conn.on('open', function() {
         // Receive messages
         conn.on('data', function(data) {
@@ -79,6 +89,6 @@ function connectWithPeer(peerId) {
 }
 
 function callRemote() {
-    var call = peer.call(remotePeerId, mediaStream);
+    call = peer.call(remotePeerId, mediaStream);
 }
 
