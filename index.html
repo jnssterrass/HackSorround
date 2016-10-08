@@ -25,10 +25,14 @@
             <a href="https://github.com/jnssterrass/HackSorround/"
                title="WebRTC HackSurround">HackSurround</a>
         </h1>
-
     </div>
 
     <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="title_room">
+            <label class="mdl-textfield__label" for="title_room">Room title...</label>
+        </div>
+        <br>
         Which channel are you?
         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
             <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="left" checked>
@@ -71,15 +75,18 @@
             </a>
         </div>
     </div>
+    <audio controls autoplay></audio>
 </div>
 <script src="js/register.js"></script>
+<script src="js/main.js"></script>
+
 <script>
     $("#sender").click(function () {
-        register("sender");
-
+        register("sender",sourcePeerId);
+        initSender();
     });
     $("#receiver").click(function () {
-        register("receivers");
+        register("receivers", sourcePeerId);
     });
 </script>
 </body>
