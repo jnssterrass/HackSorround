@@ -25,14 +25,11 @@ var constraints = window.constraints = {
     video: false
 };
 
-function initSender(){
-    remotePeerId = getReceiverId();
+function initSender(peerToConnect){
+    remotePeerId = peerToConnect;
     initMediaDevices();
 }
 
-function getReceiverId(){
-    return "";
-};
 
 function handleSuccess(stream) {
     var audioTracks = stream.getAudioTracks();
