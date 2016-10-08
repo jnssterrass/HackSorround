@@ -1,0 +1,5 @@
+.demo-card-wide.mdl-card {
+    width: 512px;
+    position: relative;
+    margin: auto;
+}
