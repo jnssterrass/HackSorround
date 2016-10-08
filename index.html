@@ -15,7 +15,7 @@
 
     <nav>
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo center"><i class="material-icons">surround_sound</i>HackSurround</a>
+            <a class="brand-logo center"><i class="material-icons">surround_sound</i>HackSurround</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="https://github.com/jnssterrass/HackSorround"><i class="material-icons">code</i></a></li>
                 <li><a href="#"><i class="material-icons">perm_identity</i></a></li>
@@ -133,7 +133,6 @@
                     peerToConnect = json[key].peerId;
                     break;
                 }
-                //var peerToConnect = json.get('peerId');
                 initSender(peerToConnect);
             },
             error: function(err){
