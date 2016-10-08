@@ -2,7 +2,7 @@
  * Created by eduard on 8/10/16.
  */
 
-var peerId;
+var id;
 
 $(document).ready(function () {
     // peerId = new Peer({key: 'lwjd5qra8257b9'});
@@ -27,6 +27,9 @@ function register(role, peerId) {
         type: "POST",
         url: "https://hack-surround.firebaseio.com/"+role+"/" + selectedRadio + "/.json?auth=IxrO3PDuz4bvFvwrNbpIV48pISdjykYLrri3tNjB",
         data: JSON.stringify({"peerId": peerId, "title":title}),
-        dataType: "JSON"
+        dataType: "JSON",
+        success:  function (idDatabase) {
+            id = idDatabase;
+        }
     });
 }

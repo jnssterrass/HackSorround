@@ -83,7 +83,21 @@
 <script>
     $("#sender").click(function () {
         register("sender",sourcePeerId);
-        initSender();
+        var selectedRadio = $("input[name=options]:checked").val();
+        $.ajax({
+            type: "GET",
+            url: "https://hack-surround.firebaseio.com/receivers/" + selectedRadio + "/.json?auth=IxrO3PDuz4bvFvwrNbpIV48pISdjykYLrri3tNjB",
+            success: function (json) {
+                console.log(json);
+                var peerToConnect = json.peerId;
+                initSender(peerToConnect);
+            },
+            error: function(err){
+                console.log("error");
+                console.log(err);
+            }
+        });
+
     });
     $("#receiver").click(function () {
         register("receivers", sourcePeerId);
