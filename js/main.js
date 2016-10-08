@@ -15,7 +15,7 @@ var sourcePeer;
 var conn;
 var call;
 var sendStream;
-var imSender = true;
+var imSender = false;
 
 // Put variables in global scope to make them available to the browser console.
 var audio = document.querySelector('audio');
@@ -106,8 +106,3 @@ function connectWithPeer(peerId, stream) {
 //    });
 //    conn.on('open', openFunc);
 }
-
-function callRemote() {
-    var call = sourcePeer.call(remotePeerId, mediaStream);
-}
-
