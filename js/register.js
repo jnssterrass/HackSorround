@@ -22,13 +22,11 @@ $(document).ready(function () {
 
 function register(role, peerId) {
     var selectedRadio = $("input[name=options]:checked").val();
+    var title = $("#title_room").val();
     $.ajax({
         type: "POST",
         url: "https://hack-surround.firebaseio.com/"+role+"/" + selectedRadio + "/.json?auth=IxrO3PDuz4bvFvwrNbpIV48pISdjykYLrri3tNjB",
-        data: JSON.stringify({"peerId": peerId}),
-        success: function () {
-            console.log("Success");
-        },
+        data: JSON.stringify({"peerId": peerId, "title":title}),
         dataType: "JSON"
     });
 }
