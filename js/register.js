@@ -25,7 +25,7 @@ function register(role, peerId) {
     $.ajax({
         type: "POST",
         url: "https://hack-surround.firebaseio.com/"+role+"/" + selectedRadio + "/.json?auth=IxrO3PDuz4bvFvwrNbpIV48pISdjykYLrri3tNjB",
-        data: JSON.stringify({"peerId": peerId),
+        data: JSON.stringify({"peerId": peerId}),
         success: function () {
             console.log("Success");
         },
