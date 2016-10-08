@@ -13,6 +13,9 @@ var remotePeerId = "";
 var sourcePeerId = "";
 var sourcePeer;
 var conn;
+var call;
+var sendStream;
+var imSender = true;
 
 // Put variables in global scope to make them available to the browser console.
 var audio = document.querySelector('audio');
@@ -21,6 +24,21 @@ var constraints = window.constraints = {
     audio: true,
     video: false
 };
+
+function setRemotePeerId(id) {
+    remotePeerId = id;
+
+    navigator.mediaDevices.getUserMedia(constraints).
+    then(handleSuccess).catch(handleError);
+}
+
+function setAsSender() {
+    imSender = true;
+}
+
+function setAsReceiver() {
+    imSender = false;
+}
 
 function handleSuccess(stream) {
     var audioTracks = stream.getAudioTracks();
@@ -31,21 +49,12 @@ function handleSuccess(stream) {
     };
     window.stream = stream; // make variable available to browser console
     audio.srcObject = stream;
+    sendStream = stream;
+    if (imSender) connectWithPeer(remotePeerId, stream);
 }
 
 function handleError(error) {
     console.log('navigator.getUserMedia error: ', error);
-}
-
-navigator.mediaDevices.getUserMedia(constraints).
-then(handleSuccess).catch(handleError);
-
-function showMyId(id) {
-    $("#").val(id);
-}
-
-function getRemoteId() {
-    return $("#id_peer").val();
 }
 
 function initSource() {
@@ -58,6 +67,27 @@ function initSource() {
     sourcePeer.on('connection', function(conn) {
         // Receive messages
         conn.on('data', function(data) {
+            console.log('Received', data.id);
+        });
+    });
+    sourcePeer.on('call', function(call) {
+        console.log("Incomin Call");
+        console.log(call);
+        call.answer();
+        console.log("Answered call");
+        call.on('stream', function(stream) {
+            console.log("Stream received");
+            window.stream = stream;
+            audio.srcObject = stream;
+        });
+    });
+}
+
+function connectWithPeer(peerId) {
+    conn = sourcePeer.connect(peerId);
+    conn.on('open', function() {
+        // Receive messages
+        conn.on('data', function(data) {
             console.log('Received', data);
         });
     });
@@ -65,17 +95,12 @@ function initSource() {
 
 initSource();
 
-function connectWithPeer(peerId) {
-    conn = peer.connect(remotePeerId);
-    conn.on('open', function() {
-        // Receive messages
-        conn.on('data', function(data) {
-            console.log('Received', data);
-        });
-
-        // Send messages
-        conn.send('Hello!');
-    });
+function connectWithPeer(peerId, stream) {
+    conn = sourcePeer.call(peerId, stream);
+//    conn.on('error', function(error) {
+//        console.log(error);
+//    });
+//    conn.on('open', openFunc);
 }
 
 function callRemote() {
