@@ -5,7 +5,7 @@
     <title>HackSurround</title>
 
     <!-- Material Design Lite -->
-    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <!-- <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.amber-deep_orange.min.css"/>
     <link rel="stylesheet" href="style.css">
@@ -86,10 +86,16 @@
         var selectedRadio = $("input[name=options]:checked").val();
         $.ajax({
             type: "GET",
+            dataType: "json",
             url: "https://hack-surround.firebaseio.com/receivers/" + selectedRadio + "/.json?auth=IxrO3PDuz4bvFvwrNbpIV48pISdjykYLrri3tNjB",
             success: function (json) {
                 console.log(json);
-                var peerToConnect = json.peerId;
+                var peerToConnect;
+                for (var key in json) {
+                    peerToConnect = json[key].peerId;
+                    break;
+                }
+                //var peerToConnect = json.get('peerId');
                 initSender(peerToConnect);
             },
             error: function(err){
