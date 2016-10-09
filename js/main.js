@@ -6,10 +6,10 @@
  *  tree.
  */
 
-'use strict';
+ 'use strict';
 
 // global variables
-var remotePeerId = "";
+var remotePeerIds = [];
 var sourcePeerId = "";
 var sourcePeer;
 var conn;
@@ -25,23 +25,24 @@ var constraints = window.constraints = {
     video: false
 };
 
-function initSender(peerToConnect){
-    remotePeerId = peerToConnect;
+function initSender(peersToConnect){
+    remotePeerIds = peersToConnect;
     initMediaDevices();
 }
 
 
 function handleSuccess(stream) {
     var audioTracks = stream.getAudioTracks();
-    console.log('Got stream with constraints:', constraints);
-    console.log('Using audio device: ' + audioTracks[0].label);
     stream.oninactive = function() {
         console.log('Stream ended');
     };
     window.stream = stream; // make variable available to browser console
     audio.srcObject = stream;
     sendStream = stream;
-    connectWithPeer(remotePeerId, stream);
+    for(var i in remotePeerIds){
+        console.log(remotePeerIds[i]);
+        connectWithPeer(remotePeerIds[i], stream);
+    }
 }
 
 function handleError(error) {
