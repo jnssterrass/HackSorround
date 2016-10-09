@@ -129,10 +129,9 @@
             success: function (json) {
                 console.log(json);
                 var peerToConnect;
-                for (var key in json) {
-                    peerToConnect = json[key].peerId;
-                    break;
-                }
+                var keys = Object.keys(json);
+                var key = keys[keys.length-1];
+                peerToConnect = json[key].peerId;
                 initSender(peerToConnect);
             },
             error: function(err){
