@@ -39,7 +39,7 @@
     <h4>Which channel will you join?</h4>
     <form action="#">
         <p>
-          <input name="options" type="radio" id="left" value="left"/>
+          <input name="options" type="radio" id="left" value="left" checked/>
           <label for="left">Left channel</label>
       </p>
       <p>
@@ -60,7 +60,7 @@
     <a id="sender" class="waves-effect waves-light btn-large"><i class="material-icons left">settings_input_antenna</i>Sender</a>
 </div>
 <div class="section center">
-    <audio controls autoplay></audio>
+    <audio id="audioplayer" controls autoplay style="display:none"></audio>
 </div>
 
 <div class="divider"></div>
@@ -154,12 +154,13 @@
 
     });
     $("#receiver").click(function () {
+        document.getElementById("audioplayer").style.display = "inline";
         register("receivers", sourcePeerId);
     });
 </script>
 
 <script>
- $(document).ready(function(){
+   $(document).ready(function(){
     $('.modal-trigger').leanModal({closeButton: ".modal-close" });
 });
 </script>
