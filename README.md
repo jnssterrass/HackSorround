@@ -7,3 +7,6 @@ HackSurround uses RTC web technology so any device with web browser (i.e. Google
 # How to use it
 The user either choose which channel to join and which role does and then the streaming begins. To close the connection just close the browser.
 
+# Future work
+- Play any music file on other devices (increasing volume sensation)
+- Play video files with more than one audio channel in a surrounding system
