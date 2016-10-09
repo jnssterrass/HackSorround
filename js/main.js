@@ -54,7 +54,7 @@ function initMediaDevices(){
 }
 
 function initSource() {
-    sourcePeer = new Peer({host: "495f937b.ngrok.io",port: 9000});
+    sourcePeer = new Peer({host: "495f937b.ngrok.io"});
     sourcePeer.on('open', function(id) {
         sourcePeerId = id;
         console.log('Source peer ID is: ' + sourcePeerId);
